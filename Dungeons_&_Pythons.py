@@ -6,7 +6,6 @@ for i in range(field_area):
 field[0][0] = 'P'
 field[field_area - 1][field_area - 1] = 'O'
 
-
 n = 0
 m = 0
 wall = "Ściana!!!! Wybierz inny kierunek"
