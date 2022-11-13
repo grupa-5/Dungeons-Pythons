@@ -1,27 +1,28 @@
 from random import randint
 
-field_area = int(input("Podaj rozmiar planszy: "))
 field = []
+
+field_area = int(input("Podaj rozmiar planszy: "))
+
 for i in range(field_area):
     field.append(['*'] * field_area)
 
-player_x = 0
-player_y = 0
-apple_x = 0
-apple_y = 0
-wall = "Ściana!!!! Wybierz inny kierunek"
-
-while player_x == apple_x and player_y == apple_y:
+while True:
     player_x = randint(0, field_area - 1)
     player_y = randint(0, field_area - 1)
     apple_x = randint(0, field_area - 1)
     apple_y = randint(0, field_area - 1)
 
+    if player_x != apple_x or player_y != apple_y:
+        break
+
 field[player_x][player_y] = 'P'
 field[apple_x][apple_y] = 'O'
+wall = "Ściana!!!! Wybierz inny kierunek"
+find_apple = False
 
 
-while player_x != (apple_x) or player_y != (apple_y):
+while not find_apple:
     for area in field:
         print(area)
     move = input("Gdzie chcesz iść: (WSAD)").upper()
@@ -57,6 +58,10 @@ while player_x != (apple_x) or player_y != (apple_y):
             field[player_x][player_y] = "P"
         case _:
             print("Zła komenda!!!! Wpisz jeszcze raz!!!!")
+
+    if player_x == (apple_x) and player_y == (apple_y):
+        find_apple = True
+
 
 print("Znalazłeś jabłko!! Koniec Gry!!")
 
