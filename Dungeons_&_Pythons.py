@@ -8,6 +8,7 @@ for i in range(field_area):
     field.append(['*'] * field_area)
 
 while True:
+
     player_x = randint(0, field_area - 1)
     player_y = randint(0, field_area - 1)
     apple_x = randint(0, field_area - 1)
@@ -21,11 +22,9 @@ field[apple_x][apple_y] = 'O'
 wall = "Ściana!!!! Wybierz inny kierunek"
 find_apple = False
 
-
 while not find_apple:
-    for area in field:
-        print(area)
-    move = input("Gdzie chcesz iść: (WSAD), q aby zakończyć").upper()
+
+    move = input("Gdzie chcesz iść: (WSAD), 'm' aby otworzyć mapę, 'q' aby zakończyć").upper()
 
     match move:
         case "S":
@@ -56,6 +55,10 @@ while not find_apple:
             field[player_x][player_y] = "*"
             player_y += 1
             field[player_x][player_y] = "P"
+        case 'M':
+            for area in field:
+                print(area)
+            print('''"P" - Gracz\n"O" - Jabłko''')
         case 'Q':
             print("Wyszedłeś z gry")
             quit()
