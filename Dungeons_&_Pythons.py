@@ -25,7 +25,7 @@ find_apple = False
 while not find_apple:
     for area in field:
         print(area)
-    move = input("Gdzie chcesz iść: (WSAD)").upper()
+    move = input("Gdzie chcesz iść: (WSAD), q aby zakończyć").upper()
 
     match move:
         case "S":
@@ -56,6 +56,9 @@ while not find_apple:
             field[player_x][player_y] = "*"
             player_y += 1
             field[player_x][player_y] = "P"
+        case 'Q':
+            print("Wyszedłeś z gry")
+            quit()
         case _:
             print("Zła komenda!!!! Wpisz jeszcze raz!!!!")
 
